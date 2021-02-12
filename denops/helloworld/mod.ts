@@ -1,32 +1,33 @@
-import { Denops } from "https://deno.land/x/denops@v0.1/denops.ts";
+// import { Denops } from "https://deno.land/x/denops@v0.1/denops.ts";
+import { Denops } from "../../../denops-deno/mod.ts";
 
-// Create denops server
+// Create denops
 const denops = new Denops({
   async echo(text: unknown): Promise<unknown> {
-    return Promise.resolve(`${text}`);
+    return await Promise.resolve(`${text}`);
   },
 
   async say(app: unknown): Promise<void> {
     if (typeof app !== "string") {
       throw new Error("'app' must be a string");
     }
-    const name = await denops.call("input", "Your name: ");
+    const name = await denops.call("input", ["Your name: "]);
     const version = await denops.eval("v:version");
     await denops.command("redraw");
     await denops.command(
-      `echomsg 'Hello ${name}. Your are using ${app} in Vim/Neovim ${version}'`
+      `echomsg 'Hello ${name}. Your are using ${app} in Vim/Neovim ${version}'`,
     );
   },
 });
 
-// Add command
-await denops.command(
-  'command! DenopsHelloWorld call denops#request("helloworld", "say", ["Denops"])'
-);
-
-await denops.debug("denops-helloworld debug message");
-await denops.info("denops-helloworld info message");
-await denops.error("denops-helloworld error message");
-
-// Wait until the server is closed
-await denops.waitClosed();
+// Start plugin eventloop
+denops.start(async () => {
+  // Add command
+  await denops.command(
+    'command! DenopsHelloWorld call denops#request("helloworld", "say", ["Denops"])',
+  );
+  // Add test output
+  await denops.debug("This is test DEBUG message");
+  await denops.info("This is test INFO message");
+  await denops.error("This is test ERROR message");
+});
