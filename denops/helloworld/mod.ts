@@ -1,5 +1,4 @@
-// import { Denops } from "https://deno.land/x/denops@v0.1/denops.ts";
-import { Denops } from "../../../denops-deno/mod.ts";
+import { Denops } from "https://deno.land/x/denops@v0.3/denops.ts";
 
 // Create denops
 const denops = new Denops({
