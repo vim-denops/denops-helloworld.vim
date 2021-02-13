@@ -7,7 +7,7 @@ Denops.start(async function (denops: Denops): Promise<void> {
     async echo(text: unknown): Promise<unknown> {
       if (typeof text !== "string") {
         throw new Error(
-          `'text' in 'echo()' of ${denops.name} must be a string`
+          `'text' in 'echo()' of ${denops.name} must be a string`,
         );
       }
       return await Promise.resolve(text);
@@ -21,18 +21,18 @@ Denops.start(async function (denops: Denops): Promise<void> {
       const version = await denops.eval("v:version");
       await denops.command("redraw");
       await denops.command(
-        `echomsg 'Hello ${name}. Your are using ${app} in Vim/Neovim ${version}'`
+        `echomsg 'Hello ${name}. Your are using ${app} in Vim/Neovim ${version}'`,
       );
     },
   });
 
   // Add command
   await denops.command(
-    `command! DenopsHelloWorldEcho echo denops#request("${denops.name}", "echo", ["This is hello world message"])`
+    `command! DenopsHelloWorldEcho echo denops#request("${denops.name}", "echo", ["This is hello world message"])`,
   );
 
   await denops.command(
-    `command! DenopsHelloWorldSay echo denops#notify("${denops.name}", "say", ["Denops"])`
+    `command! DenopsHelloWorldSay echo denops#notify("${denops.name}", "say", ["Denops"])`,
   );
 
   console.log("denops-helloworld.vim has loaded");
