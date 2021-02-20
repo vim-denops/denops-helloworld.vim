@@ -1,7 +1,7 @@
-import { Denops } from "https://deno.land/x/denops@v0.5/denops.ts";
+import { Denops } from "https://deno.land/x/denops@v0.6/denops.ts";
 
 // Start plugin event-loop
-Denops.start(async function (denops: Denops): Promise<void> {
+Denops.start(async (denops) => {
   // Register dispatcher
   denops.extendDispatcher({
     async echo(text: unknown): Promise<unknown> {
@@ -17,21 +17,21 @@ Denops.start(async function (denops: Denops): Promise<void> {
       if (typeof app !== "string") {
         throw new Error(`'app' in 'say()' of ${denops.name} must be a string`);
       }
-      const name = await denops.call("input", ["Your name: "]);
+      const name = await denops.call("input", "Your name: ");
       const version = await denops.eval("v:version");
-      await denops.command("redraw");
-      await denops.command(
+      await denops.cmd("redraw");
+      await denops.cmd(
         `echomsg 'Hello ${name}. Your are using ${app} in Vim/Neovim ${version}'`,
       );
     },
   });
 
   // Add command
-  await denops.command(
+  await denops.cmd(
     `command! DenopsHelloWorldEcho echo denops#request("${denops.name}", "echo", ["This is hello world message"])`,
   );
 
-  await denops.command(
+  await denops.cmd(
     `command! DenopsHelloWorldSay echo denops#notify("${denops.name}", "say", ["Denops"])`,
   );
 
