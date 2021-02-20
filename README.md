@@ -4,14 +4,27 @@ An example plugin of [denops.vim](https://github.com/vim-denops/denops.vim).
 
 Use your favorite Vim plugin manager to install it.
 
+## Code
+
+| File                                   | Description                                              |
+| -------------------------------------- | -------------------------------------------------------- |
+| [`raw.ts`](./denops/helloworld/raw.ts) | Plugin which only use [denops][denops] module.           |
+| [`std.ts`](./denops/helloworld/std.ts) | Plugin which use [denops-std][denops-std] module instead |
+
 ## Usage
 
 Use one of the following commands to test the features:
 
-| Command                | Description                                          |
-| ---------------------- | ---------------------------------------------------- |
-| `DenopsHelloWorldEcho` | Echo a text which is constructed in Deno plugin      |
-| `DenopsHelloWorldSay`  | Interactively construct text in Deno plugin and echo |
+| Command                 | Description                                                |
+| ----------------------- | ---------------------------------------------------------- |
+| `DenopsEcho`            | Echo a text which is constructed in Deno plugin            |
+| `DenopsHello`           | Interactively construct text in Deno plugin and echo       |
+| `DenopsGetVariables`    |                                                            |
+| `DenopsSetVariables`    |                                                            |
+| `DenopsRemoveVariables` |                                                            |
+| `DenopsRegisterAutocmd` |                                                            |
+| `DenopsRawEcho`         | Echo a text which is constructed in Deno plugin (raw)      |
+| `DenopsRawHello`        | Interactively construct text in Deno plugin and echo (raw) |
 
 Or use `denops#request({plugin-name}, {fn}, {params})` to call a function and
 get the result like
