@@ -6,10 +6,10 @@ Use your favorite Vim plugin manager to install it.
 
 ## Code
 
-| File                                   | Description                                                                                 |
-| -------------------------------------- | ------------------------------------------------------------------------------------------- |
-| [`raw.ts`](./denops/helloworld/raw.ts) | Plugin which only use [denops](https://github.com/vim-denops/denops-deno) module.           |
-| [`std.ts`](./denops/helloworld/std.ts) | Plugin which use [denops-std](https://github.com/vim-denops/denops-std-deno) module instead |
+| File                                                      | Description                                                                                 |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [`helloworld_raw/mod.ts`](./denops/helloworld_raw/mod.ts) | Plugin which only use [denops](https://github.com/vim-denops/denops-deno) module.           |
+| [`helloworld/mod.ts`](./denops/helloworld/mod.ts)         | Plugin which use [denops-std](https://github.com/vim-denops/denops-std-deno) module instead |
 
 ## Usage
 
