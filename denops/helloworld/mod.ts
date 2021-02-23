@@ -1,5 +1,5 @@
 // Import 'start' function from denops_std
-import { start } from "https://deno.land/x/denops_std@v0.2/mod.ts";
+import { start } from "https://deno.land/x/denops_std@v0.3/mod.ts";
 
 // Call 'start' with async callback. The callback get 'vim' instance.
 start(async (vim) => {
