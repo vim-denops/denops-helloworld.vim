@@ -1,6 +1,14 @@
 name: Test (Deno)
 
-on: [push]
+env:
+  DENO_VERSION: 1.x
+
+on:
+  schedule:
+    - cron: '0 7 * * 0'
+  push:
+  pull_request:
+
 
 jobs:
   lint:
@@ -8,9 +16,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: denolib/setup-deno@v2
+      - uses: denoland/setup-deno@main
         with:
-          deno-version: v1.x
+          deno-version: ${{ env.DENO_VERSION }}
       - name: Lint
         run: deno lint --unstable
 
@@ -19,9 +27,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: denolib/setup-deno@v2
+      - uses: denoland/setup-deno@main
         with:
-          deno-version: v1.x
+          deno-version: ${{ env.DENO_VERSION }}
       - name: Format
         run: |
           deno fmt --check
@@ -31,9 +39,9 @@ jobs:
   #
   #   steps:
   #     - uses: actions/checkout@v2
-  #     - uses: denolib/setup-deno@v2
+  #     - uses: denoland/setup-deno@main
   #       with:
-  #         deno-version: v1.x
+  #         deno-version: ${{ env.DENO_VERSION }}
   #     - name: Test
   #       run: |
   #         deno test
