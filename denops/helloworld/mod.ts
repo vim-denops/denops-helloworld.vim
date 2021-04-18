@@ -1,8 +1,8 @@
 // Import 'start' function from denops_std
-import { start } from "https://deno.land/x/denops_std@v0.7/mod.ts";
+import { main } from "https://deno.land/x/denops_std@v0.8/mod.ts";
 
-// Call 'start' with async callback. The callback get 'vim' instance.
-start(async (vim) => {
+// Call 'main' with async callback. The callback get RunnerContext.
+main(async ({ vim }) => {
   // Register RPC functions with 'vim.register' like:
   vim.register({
     // Developers can define multiple endpoints which take arbitrary number of arguments
