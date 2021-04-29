@@ -1,5 +1,8 @@
 // Import 'start' function from denops_std
-import { main } from "https://deno.land/x/denops_std@v0.8/mod.ts";
+import {
+  ensureString,
+  main,
+} from "https://deno.land/x/denops_std@v0.10/mod.ts";
 
 // Call 'main' with async callback. The callback get RunnerContext.
 main(async ({ vim }) => {
@@ -8,44 +11,23 @@ main(async ({ vim }) => {
     // Developers can define multiple endpoints which take arbitrary number of arguments
     // and return arbitrary value as a Promise.
     // This function can be called by denops#request() or denops#notify() functions.
-    async echo(text: unknown): Promise<unknown> {
-      if (typeof text !== "string") {
-        throw new Error(`'text' in 'echo()' of ${vim.name} must be a string`);
-      }
-      // console.log (console.info, console.debug as well) output message to Vim echo
-      // area with [denops] prefix.
-      console.log("echo is called");
-
-      // console.error (console.warn, console.critical as well) output message to Vim
-      // echo area with [denops] prefix as error message
-      console.error("echo is not really implemented yet");
-
-      return await Promise.resolve(text);
-    },
-
-    async hello(app: unknown): Promise<void> {
-      if (typeof app !== "string") {
-        throw new Error(`'app' in 'say()' of ${vim.name} must be a string`);
-      }
-
-      // Use 'vim.call(func, ...args)' to call Vim's function and get result
+    async say(where: unknown): Promise<void> {
+      // Ensure that `prefix` is 'string' here
+      ensureString(where, "where");
+      // Use `call` to call Vim's function
       const name = await vim.call("input", "Your name: ");
-      console.log("name", name);
-
-      // Use 'vim.eval(expr, context)' to evaluate Vim's expression and get result
-      const result = await vim.eval("1 + 1 + value", {
-        value: 2,
+      // Use `eval` to evaluate Vim's expression
+      const progname = await vim.eval("v:progname");
+      // Construct messages
+      const messages = [
+        `Hello ${where}`,
+        `Your name is ${name}`,
+        `This is ${progname}`,
+      ];
+      // Use `cmd` to execute Vim's command
+      await vim.cmd(`redraw | echomsg message`, {
+        message: messages.join(". "),
       });
-      console.log("result", result);
-
-      // Use 'vim.cmd(cmd, context)' to execute Vim's ex command
-      await vim.cmd(
-        `echomsg printf('Hello %s. Your are using ${app} in Vim/Neovim: %s', name, result)`,
-        {
-          name,
-          result,
-        },
-      );
     },
 
     async get_variables(): Promise<void> {
@@ -110,12 +92,8 @@ main(async ({ vim }) => {
 
   // Use 'vim.execute()' to execute Vim script
   await vim.execute(`
-    command! DenopsEcho echo denops#request("${vim.name}", "echo", ["This is hello world message"])
-    command! DenopsHello echo denops#notify("${vim.name}", "hello", ["Denops"])
-    command! DenopsGetVariables echo denops#notify("${vim.name}", "get_variables", [])
-    command! DenopsSetVariables echo denops#notify("${vim.name}", "set_variables", [])
-    command! DenopsRemoveVariables echo denops#notify("${vim.name}", "remove_variables", [])
-    command! DenopsRegisterAutocmd echo denops#notify("${vim.name}", "register_autocmd", [])
+    command! HelloWorld call denops#notify("${vim.name}", "say", ["World"])
+    command! HelloDenops call denops#notify("${vim.name}", "say", ["Denops"])
   `);
 
   console.log("denops-helloworld.vim (std) has loaded");
