@@ -1,5 +1,5 @@
 // Import 'start' function from denops_std
-import { main } from "https://deno.land/x/denops_std@v0.8/mod.ts";
+import { main } from "https://deno.land/x/denops_std@v0.10/mod.ts";
 
 // Call 'main' with async callback. The callback get RunnerContext.
 main(async ({ vim }) => {
