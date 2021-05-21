@@ -30,6 +30,15 @@ main(async ({ vim }) => {
       });
     },
 
+    async buffer(): Promise<void> {
+      // Use `vim.buffer.bufadd` to add buffer named "denops"
+      const bufnr = await vim.buffer.bufadd("denops");
+      console.log("bufnr", bufnr);
+      // Use `vim.buffer.bufexists` to check if specific buffer is exists
+      console.log("bufexists with name", await vim.buffer.bufexists("denops"));
+      console.log("bufexists with bufnr", await vim.buffer.bufexists(bufnr));
+    },
+
     async get_variables(): Promise<void> {
       // Use 'vim.g.get' to access global variable
       console.log("g:denops_helloworld", await vim.g.get("denops_helloworld"));
