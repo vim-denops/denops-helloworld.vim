@@ -28,7 +28,7 @@ call denops#notify("helloworld", "say", ["World"])
 
 Some APIs of this sample plugin are not defined as commands so user need to use
 `denops#request()` or `denops#notify()` to invoke it. See
-[`app.ts`](./denops/helloworld/app.ts) to find out what's more.
+[`main.ts`](./denops/helloworld/main.ts) to find out what's more.
 
 See
 [deno doc for denops_std](https://doc.deno.land/https/deno.land/x/denops_std/mod.ts)
