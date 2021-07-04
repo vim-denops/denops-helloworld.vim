@@ -1,7 +1,7 @@
-import { Denops } from "https://deno.land/x/denops_std@v1.0.0-alpha.3/mod.ts";
-import { execute } from "https://deno.land/x/denops_std@v1.0.0-alpha.3/helper/mod.ts";
-import * as vars from "https://deno.land/x/denops_std@v1.0.0-alpha.3/variable/mod.ts";
-import * as autocmd from "https://deno.land/x/denops_std@v1.0.0-alpha.3/autocmd/mod.ts";
+import { Denops } from "https://deno.land/x/denops_std@v1.0.0-beta.0/mod.ts";
+import { execute } from "https://deno.land/x/denops_std@v1.0.0-beta.0/helper/mod.ts";
+import * as vars from "https://deno.land/x/denops_std@v1.0.0-beta.0/variable/mod.ts";
+import * as autocmd from "https://deno.land/x/denops_std@v1.0.0-beta.0/autocmd/mod.ts";
 import { ensureString } from "https://deno.land/x/unknownutil@v0.1.1/mod.ts";
 
 // Export `main` function which is executed from denops.vim
