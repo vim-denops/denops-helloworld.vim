@@ -33,7 +33,3 @@ Some APIs of this sample plugin are not defined as commands so user need to use
 See
 [deno doc for denops_std](https://doc.deno.land/https/deno.land/x/denops_std/mod.ts)
 for API details.
-
-## Dependencies
-
-This plugin use [dlink](https://github.com/keroxp/dlink) to manage deno modules.
