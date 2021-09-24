@@ -1,35 +1,26 @@
 # denops-helloworld.vim
 
-An example plugin of [denops.vim](https://github.com/vim-denops/denops.vim).
+Example plugins of [denops.vim](https://github.com/vim-denops/denops.vim).
 
 Use your favorite Vim plugin manager to install it.
 
-## Usage
+## Plugins
 
-Use one of the following commands to test the features:
+### [example-minimal](./denops/example-minimal)
 
-| Command       | Description             |
-| ------------- | ----------------------- |
-| `HelloWorld`  | Say hello to the world  |
-| `HelloDenops` | Say hello to the denops |
+A minimal denops plugin which add `DenopsHello` command that echo "Hello".
 
-Or use `denops#request({name}, {fn}, {args})` to call a function and get the
-result like
+### [example-standard](./denops/example-standard)
 
-```
-echo denops#request("helloworld", "say", ["World"])
-```
+A standard denops plugin for invoking [ripgrep][ripgrep] internally. It adds
 
-Or use `denops#notify({name}, {fn}, {params})` to call a function and leave like
+- `DenopsGrep` command to grep
+- `<Plug>(denops-grep)` (default to `<Leader>gp`) to grep
 
-```
-call denops#notify("helloworld", "say", ["World"])
-```
+[ripgrep]: https://github.com/BurntSushi/ripgrep
 
-Some APIs of this sample plugin are not defined as commands so user need to use
-`denops#request()` or `denops#notify()` to invoke it. See
-[`main.ts`](./denops/helloworld/main.ts) to find out what's more.
+## License
 
-See
-[deno doc for denops_std](https://doc.deno.land/https/deno.land/x/denops_std/mod.ts)
-for API details.
+Codes in this repository are licensed under [CC0](./LICENSE).
+
+[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")](http://creativecommons.org/publicdomain/zero/1.0/deed.ja)
