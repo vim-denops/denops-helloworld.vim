@@ -1,8 +1,9 @@
-import { Denops } from "https://deno.land/x/denops_std@v1.0.0-beta.8/mod.ts";
-import { execute } from "https://deno.land/x/denops_std@v1.0.0-beta.8/helper/mod.ts";
-import * as vars from "https://deno.land/x/denops_std@v1.0.0-beta.8/variable/mod.ts";
-import * as autocmd from "https://deno.land/x/denops_std@v1.0.0-beta.8/autocmd/mod.ts";
-import { ensureString } from "https://deno.land/x/unknownutil@v0.1.1/mod.ts";
+import { Denops } from "https://deno.land/x/denops_std@v1.11.3/mod.ts";
+import { execute } from "https://deno.land/x/denops_std@v1.11.3/helper/mod.ts";
+import * as fn from "https://deno.land/x/denops_std@v1.11.3/function/mod.ts";
+import * as vars from "https://deno.land/x/denops_std@v1.11.3/variable/mod.ts";
+import * as autocmd from "https://deno.land/x/denops_std@v1.11.3/autocmd/mod.ts";
+import { ensureString } from "https://deno.land/x/unknownutil@v1.1.2/mod.ts";
 
 // Export `main` function which is executed from denops.vim
 export async function main(denops: Denops) {
