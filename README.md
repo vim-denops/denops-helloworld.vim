@@ -1,23 +1,14 @@
 # denops-helloworld.vim
 
-Example plugins of [denops.vim](https://github.com/vim-denops/denops.vim).
+A minimal example plugin of [denops.vim](https://github.com/vim-denops/denops.vim).
 
-Use your favorite Vim plugin manager to install it.
+## Usage
 
-## Plugins
+Execute `DenopsHello` command to echo "Hello".
 
-### [example-minimal](./denops/example-minimal)
-
-A minimal denops plugin which add `DenopsHello` command that echo "Hello".
-
-### [example-standard](./denops/example-standard)
-
-A standard denops plugin for invoking [ripgrep][ripgrep] internally. It adds
-
-- `DenopsGrep` command to grep
-- `<Plug>(denops-grep)` (default to `<Leader>gp`) to grep
-
-[ripgrep]: https://github.com/BurntSushi/ripgrep
+```vim
+:DenopsHello
+```
 
 ## License
 
