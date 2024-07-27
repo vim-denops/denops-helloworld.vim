@@ -1,5 +1,5 @@
-import type { Entrypoint } from "https://deno.land/x/denops_std@v6.5.0/mod.ts";
-import { assert, is } from "https://deno.land/x/unknownutil@v3.18.1/mod.ts";
+import type { Entrypoint } from "jsr:@denops/std@7.0.0";
+import { assert, is } from "jsr:@core/unknownutil@3.18.1";
 
 // This exported `main` function is automatically called by denops.vim.
 //
